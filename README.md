@@ -1,11 +1,18 @@
-homebrew-gnuradio
-=================
+# Mac SDR tools for HackRF and RTL-SDR
 
-thanks to robotastic/homebrew-hackrf and metacollin/homebrew-gnuradio
+After the excellent prior work found at [robotastic/homebrew-hackrf][rtrepo] and [metacollin/homebrew-gnuradio][mcrepo], I decided to create a full suite of gnuradio-based tools targeting the 3.7.7.1 release of [GNU Radio][gnuradio].
+
+Included are Homebrew formulae for -
+
+* GNU Radio with GNU Radio Companion
+* The gqrx general-purpose tuner
+* RTL-SDR libraries and utilities
+* 
 
 prereqs:
-  * homebrew python already installed and happy
-  * Xquartz installed and rebooted
+
+* homebrew python already installed and happy
+* Xquartz installed and rebooted
 
 bottles use os x python which will not play nicely with the setup here. make sure gnuradio **and all of its dependencies** are built from source and not installed from bottles.
 
@@ -50,8 +57,11 @@ brew install --HEAD gqrx
 gqrx will only show the hackrf if it's plugged in before you start gqrx. pick the hackrf in the device menu. if you need a device string, use `hackrf=0` to use the first detected hackrf device.
 
 before you panic that it's not working and you're hearing no audio, make sure that you've
-  * switched gqrx 'on' with the first button in the toolbar
-  * chosen a demodulator
-  * increased the audio gain and/or your system volume enough
 
+* switched gqrx 'on' with the first button in the toolbar
+* chosen a demodulator
+* increased the audio gain and/or your system volume enough
 
+[rtrepo]: https://github.com/robotastic/homebrew-hackrf
+[mcrepo]: https://github.com/metacollin/homebrew-gnuradio
+[gnuradio]: https://gnuradio.org/redmine/projects/gnuradio/wiki
