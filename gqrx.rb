@@ -6,7 +6,7 @@ require 'formula'
 
 class Gqrx < Formula
   homepage 'https://github.com/csete/gqrx'
-  head 'https://github.com/csete/gqrx.git'
+  head 'https://github.com/csete/gqrx.git', :branch => 'gr3.6'
 
   depends_on 'cmake' => :build
   depends_on 'qt'
@@ -20,7 +20,7 @@ class Gqrx < Formula
   end
 
   def install
-    system "qmake -set PKG_CONFIG /usr/local/bin/pkg-config"
+    system "qmake -set PKG_CONFIG /usr/local/bin/pkg-config"      
     system "qmake -query"
     system "qmake gqrx.pro"
     system "make"
@@ -34,9 +34,9 @@ index 2571518..5e9c600 100644
 --- a/gqrx.pro
 +++ b/gqrx.pro
 @@ -11,17 +11,13 @@ contains(QT_MAJOR_VERSION,5) {
-
+ 
  TEMPLATE = app
-
+ 
 -macx {
 -    TARGET = Gqrx
 -    ICON = icons/scope.icns
@@ -47,16 +47,16 @@ index 2571518..5e9c600 100644
 +
 +TARGET = gqrx
 +
-
+ 
  linux-g++|linux-g++-64 {
      # Comment out to use gr-audio (gr 3.6.5.1 or later recommended)
 -    AUDIO_BACKEND = pulse
 +    #AUDIO_BACKEND = pulse
  }
-
+ 
  RESOURCES += icons.qrc
 @@ -155,28 +151,19 @@ contains(AUDIO_BACKEND, pulse): {
-
+ 
  # dependencies via pkg-config
  # FIXME: check for version?
 -unix {
@@ -69,12 +69,12 @@ index 2571518..5e9c600 100644
 -    }
 -    PKGCONFIG += gnuradio-core gnuradio-osmosdr
 -}
-
+ 
  unix:!macx {
      LIBS += -lboost_system -lboost_program_options
      LIBS += -lrt  # need to include on some distros
  }
-
+ 
 -macx-g++ {
 -     LIBS += -lboost_system-mt -lboost_program_options-mt
 -#    INCLUDEPATH += /usr/local/include
@@ -89,20 +89,20 @@ index 2571518..5e9c600 100644
 +     INCLUDEPATH += /usr/local/include/osmosdr
 +     INCLUDEPATH += /opt/local/include
  }
-
+ 
  OTHER_FILES += \diff --git a/dsp/rx_agc_xx.cpp b/dsp/rx_agc_xx.cpp
 index 0b2ce61..2157266 100644
 --- a/dsp/rx_agc_xx.cpp
 +++ b/dsp/rx_agc_xx.cpp
 @@ -83,8 +83,7 @@ int rx_agc_cc::work(int noutput_items,
      d_agc->ProcessData(noutput_items, &ib[0], &ob[0]);
-
+ 
      for (i = 0; i < noutput_items; i++) {
 -        out[i].real() = ob[i].re;
 -        out[i].imag() = ob[i].im;
 +        out[i] = gr_complex(ob[i].re, ob[i].im);
      }
-
+ 
      return noutput_items;
 diff --git a/dsp/rx_noise_blanker_cc.cpp b/dsp/rx_noise_blanker_cc.cpp
 index f52ffa3..cbdc9c6 100644
@@ -116,7 +116,7 @@ index f52ffa3..cbdc9c6 100644
 -        out[i].real() = in[i].real();
 +        out[i] = in[i];
      }
-
+ 
      if (d_nb1_on)
 diff --git a/applications/gqrx/receiver.cpp b/applications/gqrx/receiver.cpp
 index c856fb7..1d7700b 100644
