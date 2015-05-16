@@ -1,12 +1,25 @@
 homebrew-gnuradio
 =================
-Delicious and foamy tap of the latest ~~development~~ stable version of gnuradio! Yay! 
 
-This will *not* automatically handle gnuradio's python dependencies, in accordance with homebrew's python 
-policy. Typically, you can install the python dependencies required by gnuradio by running:
+homebrew python already installed and happy
+
+```sh
+brew install --build-from-source libxml2 --with-python
+brew install --build-from-source libxslt
+brew link libxml2 --force
+brew link libxslt --force
+```
 
 ```sh
 pip install Cheetah lxml matplotlib numpy scipy docutils sphinx
+```
+
+```sh
+brew tap daveio/hackrf
+```
+
+```sh
+brew install --build-from-source wxmac --python
 ```
 
 Then, simply run: 
