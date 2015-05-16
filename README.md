@@ -1,6 +1,8 @@
 homebrew-gnuradio
 =================
 
+thanks to robotastic/homebrew-hackrf and metacollin/homebrew-gnuradio
+
 prereqs:
   * homebrew python already installed and happy
   * Xquartz installed and rebooted
@@ -29,6 +31,7 @@ brew tap daveio/hackrf
 
 ```sh
 brew install --build-from-source wxmac --python
+brew install --c++11 --universal --build-from-source boost
 ```
 
 ```sh
