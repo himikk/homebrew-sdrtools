@@ -30,3 +30,33 @@ class Gqrx < Formula
 end
 __END__
 
+diff --git a/gqrx.pro b/gqrx.pro
+index c8877c6..032ff3e 100644
+--- a/gqrx.pro
++++ b/gqrx.pro
+@@ -24,6 +24,8 @@ macx {
+     TARGET = gqrx
+ }
+ 
++PKG_CONFIG_PATH += /usr/local/lib/pkgconfig
++
+ # enable pkg-config to find dependencies
+ CONFIG += link_pkgconfig
+ 
+@@ -234,8 +236,16 @@ unix:!macx {
+ 
+ macx {
+     LIBS += -lboost_system-mt -lboost_program_options-mt
++    LIBPATH += /usr/local/lib
++    #INCLUDEPATH += /usr/local/include
++    #INCLUDEPATH += /usr/local/include/gnuradio
++    #INCLUDEPATH += /usr/local/include/osmosdr
++    INCLUDEPATH += /usr/local/include/boost
++    #INCLUDEPATH += /opt/local/include
+ }
+ 
++QT_LIB_PATH += /usr/local/lib
++
+ OTHER_FILES += \
+     bookmarks.csv \
+     gqrx.desktop \

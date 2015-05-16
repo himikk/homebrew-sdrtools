@@ -31,7 +31,7 @@ brew tap daveio/hackrf
 
 ```sh
 brew install --build-from-source wxmac --python
-brew install --c++11 --universal --build-from-source boost
+brew install boost ---with-icu4c --build-from-source
 ```
 
 ```sh
