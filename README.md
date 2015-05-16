@@ -8,11 +8,7 @@ prereqs:
   * Xquartz installed and rebooted
 
 bottles use os x python
-optional: in your shell config file, disable bottles with
-
-```sh
-export HOMEBREW_BUILD_FROM_SOURCE=1
-```
+optional: in your shell config file, disable bottles with ```export HOMEBREW_BUILD_FROM_SOURCE=1```
 
 ```sh
 brew install --build-from-source libxml2 --with-python
@@ -46,5 +42,9 @@ brew install --HEAD gr-osmosdr
 ```
 
 now we want gqrx
+
+```sh
+brew install --HEAD gqrx
+```
 
 
