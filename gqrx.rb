@@ -21,10 +21,11 @@ class Gqrx < Formula
   end
 
   def install
+    ENV.append_path "PKG_CONFIG_PATH", "#{lib}/pkgconfig"
     system "qmake -set PKG_CONFIG /usr/local/bin/pkg-config"
     system "qmake -query"
     system "qmake gqrx.pro"
-    system "export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig; make"
+    system "make"
     bin.install 'gqrx.app/Contents/MacOS/gqrx'
   end
 end
