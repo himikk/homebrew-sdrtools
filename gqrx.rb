@@ -24,7 +24,7 @@ class Gqrx < Formula
     system "qmake -set PKG_CONFIG /usr/local/bin/pkg-config"
     system "qmake -query"
     system "qmake gqrx.pro"
-    system "PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig make"
+    system "export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig; make"
     bin.install 'gqrx.app/Contents/MacOS/gqrx'
   end
 end
