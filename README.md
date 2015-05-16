@@ -38,6 +38,11 @@ brew install --build-from-source wxmac --python
 brew install gnuradio
 ```
 
+```sh
+brew install --HEAD gr-baz
+brew install --HEAD rtlsdr
+brew install --HEAD gr-osmosdr
+
 But don't worry, if you weren't able to use pip or are missing a python dependency, homebrew will see which 
 python packages are missing (if any) and tell you how to install them after you try to `brew install gnuradio`.
 
