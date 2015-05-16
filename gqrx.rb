@@ -74,15 +74,6 @@ index c8877c6..08acc94 100644
 
  RESOURCES += icons.qrc \
      textfiles.qrc
-@@ -48,7 +36,7 @@ isEmpty(PREFIX) {
- }
-
- target.path  = $$PREFIX/bin
--INSTALLS    += target
-+INSTALLS    += target
-
- #CONFIG += debug
-
 @@ -214,18 +202,11 @@ macx {
      SOURCES += osxaudio/device_list.cpp
  }
