@@ -1,4 +1,4 @@
-# SDR tools for HackRF, RTL-SDR, and more
+# SDR tools for Mac
 
 After the excellent prior work found at [robotastic/homebrew-hackrf][rtrepo] and [metacollin/homebrew-gnuradio][mcrepo], I decided to create a full suite of gnuradio-based tools targeting the 3.7 release of [GNU Radio][gnuradio].
 
