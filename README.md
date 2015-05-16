@@ -1,67 +1,141 @@
-# Mac SDR tools for HackRF and RTL-SDR
+# SDR tools for HackRF, RTL-SDR, and more
 
-After the excellent prior work found at [robotastic/homebrew-hackrf][rtrepo] and [metacollin/homebrew-gnuradio][mcrepo], I decided to create a full suite of gnuradio-based tools targeting the 3.7.7.1 release of [GNU Radio][gnuradio].
+After the excellent prior work found at [robotastic/homebrew-hackrf][rtrepo] and [metacollin/homebrew-gnuradio][mcrepo], I decided to create a full suite of gnuradio-based tools targeting the 3.7 release of [GNU Radio][gnuradio].
 
-Included are Homebrew formulae for -
+## What's included
 
-* GNU Radio with GNU Radio Companion
-* The gqrx general-purpose tuner
-* RTL-SDR libraries and utilities
-* 
+* GNU Radio with GNU Radio Companion: `gnuradio`
+* The gqrx general-purpose tuner: `gqrx`
+* [gr-baz][grbaz], a collection of extra blocks for GNU Radio: `gr-baz`
+* [gr-osmosdr][grosmosdr], an abstraction layer supporting a variety of hardware: `gr-osmosdr`
+* RTL-SDR libraries and utilities: `rtlsdr`
 
-prereqs:
+HackRF libraries and utilities now live in mainline Homebrew as `hackrf`.
 
-* homebrew python already installed and happy
-* Xquartz installed and rebooted
+## Before you build
 
-bottles use os x python which will not play nicely with the setup here. make sure gnuradio **and all of its dependencies** are built from source and not installed from bottles.
+### Switch off bottles
 
-optional: in your shell config file (`.bashrc`, `.zshrc`, etc...), disable bottles entirely (and avoid having to type `--build-from-source` every time) with `export HOMEBREW_BUILD_FROM_SOURCE=1`
+Homebrew uses 'bottles', which are binary distribution packages, to speed up installation of many formulae. Unfortunately, all bottles use Apple's Python interpreter, which will be a problem. You have two choices here -
 
-```sh
+* Use the `--build-from-source` parameter for every operation. This will disable the use of bottles for that command.
+* Disable the use of bottles entirely.
+
+I strongly recommend you disable the use of bottles entirely. To do this, simply add the following line to your shell init file - `.bashrc`, `.zshrc`, or similar...
+
+`export HOMEBREW_BUILD_FROM_SOURCE=1`
+
+...and then restart your shell (closing and reopening your terminal application will work fine). I'll include the `--build-from-source` parameter in all the commands I quote for people who can't or won't make that change, but if you have this line in your shell config they're optional.
+
+### Install Xquartz if you haven't already
+
+Grab [the latest development version of Xquartz][xquartz] and install it. Reboot your machine after it's installed.
+
+### Install Homebrew python2, and use it as your default Python
+
+This is out of scope for this document, but it's not hard. My recommendations for setting it up are:
+
+* First, install Homebrew's Tcl/Tk (it's in `homebrew/dupes`) with threading enabled.
+* Then install Homebrew's Python using Homebrew's Tcl/Tk (`--with-tcl-tk`).
+
+### Reboot
+
+Entirely optional, but it'll make sure that everything's running smoothly.
+
+## Building
+
+#### If any of the packages are already installed, substitute `brew install` for `brew reinstall` to make sure they're compiled with the proper options.
+
+#### All commands should be executed as a normal user; don't use `sudo`.
+
+First, we need to get `libxml` and `libxslt` compiled and linked, even though Homebrew warns about keg-only. I've not experienced problems; YMMV. 
+
+```
 brew install --build-from-source libxml2 --with-python
 brew install --build-from-source libxslt
 brew link libxml2 --force
 brew link libxslt --force
 ```
 
-```sh
+Next let's get the GNU Radio Python dependencies installed. If this fails with permission issues, you're probably not using Homebrew Python. You need to fix that and then start again.
+
+```
 pip install Cheetah lxml matplotlib numpy scipy docutils sphinx
 ```
 
-```sh
-brew tap daveio/hackrf
+Now we need to bring the formulae in this repo into Homebrew.
+
+```
+brew tap daveio/sdrtools
+brew update
 ```
 
-```sh
-brew install --build-from-source wxmac --python
-brew install boost ---with-icu4c --build-from-source
+Next we build WX and Boost.
+
+```
+brew install --build-from-source --python wxmac
+brew install --build-from-source --with-icu4c boost
 ```
 
-```sh
-brew install gnuradio
+And now it's time for GNU Radio itself.
+
+```
+brew install --build-from-source gnuradio
 ```
 
-```sh
-brew install --HEAD gr-baz
-brew install --HEAD rtlsdr
+Next comes the GNU Radio extras and hardware support.
+
+```
+brew install --build-from-source --HEAD gr-baz
+brew install --build-from-source --HEAD rtlsdr
 brew install --build-from-source hackrf
-brew install --HEAD gr-osmosdr
+brew install --build-from-source --HEAD gr-osmosdr
 ```
 
-now we want gqrx
+Finally, we build gqrx.
 
-```sh
-brew install --HEAD gqrx
 ```
-gqrx will only show the hackrf if it's plugged in before you start gqrx. pick the hackrf in the device menu. if you need a device string, use `hackrf=0` to use the first detected hackrf device.
+brew install --build-from-source --HEAD gqrx
+```
 
-before you panic that it's not working and you're hearing no audio, make sure that you've
+## Running the tools
 
-* switched gqrx 'on' with the first button in the toolbar
+To start gqrx:
+
+`gqrx`
+
+To start GNU Radio Companion:
+
+`gnuradio-companion`
+
+I won't list the individual tools for HackRF and RTL-SDR devices, but you can list them yourself with
+
+```
+ls -al $(brew --prefix rtlsdr)/bin
+ls -al $(brew --prefix hackrf)/bin
+```
+
+### A note about gqrx and the HackRF
+
+gqrx will only show the hackrf if it's plugged in **before** you start gqrx. The device string should be automatically filled in, but if you need one, use `hackrf=0` to use the first detected hackrf device, `hackrf=1` for the second, and so on.
+
+### A note about gqrx and no audio output
+
+After you run gqrx for the first time, you might not get any audio. Before you panic that it's not working, make sure that you've:
+
+* 'switched gqrx on' with the first button in the toolbar
 * chosen a demodulator
-* increased the audio gain and/or your system volume enough
+* increased the audio gain and/or your system volume high enough
+
+## Problems? Questions? Suggestions?
+
+I can't promise that I'll keep this repo updated on my own. The good news is that I do use GitHub Issues. Open a ticket if you have any problems, or if you want the version bumped for any of these formulae. Bonus points if you accompany your ticket with a pull request.
+
+Enjoy!
 
 [rtrepo]: https://github.com/robotastic/homebrew-hackrf
 [mcrepo]: https://github.com/metacollin/homebrew-gnuradio
 [gnuradio]: https://gnuradio.org/redmine/projects/gnuradio/wiki
+[grbaz]: http://wiki.spench.net/wiki/Gr-baz
+[grosmosdr]: http://sdr.osmocom.org/trac/wiki/GrOsmoSDR
+[xquartz]: http://xquartz.macosforge.org/trac/wiki
