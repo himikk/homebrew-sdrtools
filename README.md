@@ -1,7 +1,19 @@
 homebrew-gnuradio
 =================
 
-homebrew python already installed and happy
+prereqs:
+  * homebrew python already installed and happy
+  * Xquartz installed and rebooted
+
+bottles use os x python
+
+
+
+in your shell config file, disable bottles with
+
+```sh
+export HOMEBREW_BUILD_FROM_SOURCE=1
+```
 
 ```sh
 brew install --build-from-source libxml2 --with-python
@@ -22,9 +34,7 @@ brew tap daveio/hackrf
 brew install --build-from-source wxmac --python
 ```
 
-Then, simply run: 
 ```sh
-brew tap metacollin/gnuradio
 brew install gnuradio
 ```
 
