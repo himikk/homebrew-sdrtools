@@ -117,7 +117,7 @@ ls -al $(brew --prefix hackrf)/bin
 
 ### A note about gqrx and the HackRF
 
-gqrx will only show the hackrf if it's plugged in **before** you start gqrx. The device string should be automatically filled in, but if you need one, use `hackrf=0` to use the first detected hackrf device, `hackrf=1` for the second, and so on.
+gqrx will only show the HackRF if it's plugged in **before** you start gqrx. The device string should be automatically filled in, but if you need one, use `hackrf=0` to use the first detected HackRF device, `hackrf=1` for the second, and so on.
 
 ### A note about gqrx and no audio output
 
