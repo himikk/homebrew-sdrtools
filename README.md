@@ -31,7 +31,7 @@ I strongly recommend you disable the use of bottles entirely. To do this, simply
 
 Grab [the latest development version of Xquartz][xquartz] and install it. Reboot your machine after it's installed.
 
-### Install Homebrew python2, and use it as your default Python
+### Install Homebrew Python 2.x, and use it as your default Python
 
 This is out of scope for this document, but it's not hard. My recommendations for setting it up are:
 
