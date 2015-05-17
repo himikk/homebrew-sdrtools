@@ -2,6 +2,8 @@
 
 After the excellent prior work found at [robotastic/homebrew-hackrf][rtrepo] and [metacollin/homebrew-gnuradio][mcrepo], I decided to create a full suite of gnuradio-based tools targeting the 3.7 release of [GNU Radio][gnuradio].
 
+One of the goals of this repository is to allow native Mac OS X use of the HackRF for [Great Scott Gadgets' free online SDR course][gsgsdrcourse].
+
 ## What's included
 
 * GNU Radio with GNU Radio Companion: `gnuradio`
@@ -139,3 +141,4 @@ Enjoy!
 [grbaz]: http://wiki.spench.net/wiki/Gr-baz
 [grosmosdr]: http://sdr.osmocom.org/trac/wiki/GrOsmoSDR
 [xquartz]: http://xquartz.macosforge.org/trac/wiki
+[gsgsdrcourse]: https://greatscottgadgets.com/sdr/
