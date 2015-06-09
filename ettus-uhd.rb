@@ -3,7 +3,7 @@ require 'formula'
 class EttusUhd < Formula
   homepage 'http://www.ettus.com/'
   url 'https://github.com/EttusResearch/uhd/archive/release_003_008_004.tar.gz'
-  sha1 'fe2ef0c56567482a1789797ba94490daeb98338d'
+  sha1 'ae540374944141c0f9c459fcf3cc7ee028083602'
   version '3.7.3'
   head 'https://github.com/EttusResearch/uhd.git',
     :revision => '51bc00eed37b2bcc8c4d33b0093a7e3e573141a4',
