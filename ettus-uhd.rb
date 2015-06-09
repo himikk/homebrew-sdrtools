@@ -6,7 +6,8 @@ class EttusUhd < Formula
   sha1 'fe2ef0c56567482a1789797ba94490daeb98338d'
   version '3.7.3'
   head 'https://github.com/EttusResearch/uhd.git',
-    :revision => '51bc00eed37b2bcc8c4d33b0093a7e3e573141a4'
+    :revision => '51bc00eed37b2bcc8c4d33b0093a7e3e573141a4',
+    :shallow => true
 
   depends_on 'cmake' => :build
   depends_on 'automake' => :build
