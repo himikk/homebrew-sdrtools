@@ -4,7 +4,7 @@ class Rtlsdr < Formula
   homepage 'http://sdr.osmocom.org/trac/wiki/rtl-sdr'
   head 'git://git.osmocom.org/rtl-sdr.git',
     :shallow => false,
-    :revision => '8b4d755ba1b889510fba30f627ee08736203070d'
+    :revision => 'e3c03f738f5aef4dc51e2b741fbdb542b9cc1bb1'
 
   depends_on 'pkg-config' => :build
   depends_on 'automake' => :build
