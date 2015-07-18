@@ -3,7 +3,7 @@ require 'formula'
 class GrOsmosdr < Formula
   homepage 'http://sdr.osmocom.org/trac/wiki/GrOsmoSDR'
   head 'git://git.osmocom.org/gr-osmosdr.git', :shallow => false,
-    :revision => '46e95395e09f952654da30bf575790ad1f7736e1'
+    :revision => '86ad584204762eeb01f07daa683673f1ec3f1df5'
 
   depends_on 'cmake' => :build
   depends_on 'gnuradio'

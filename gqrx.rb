@@ -7,7 +7,7 @@ require 'formula'
 class Gqrx < Formula
   homepage 'https://github.com/csete/gqrx'
   head 'https://github.com/csete/gqrx.git',
-    :revision => '8ffff0cabaead5960cb558da596d6c060f0de711'
+    :revision => '222bf623983b144b143c94c3ed6cb7c91cd43d31'
 
   depends_on 'cmake' => :build
   depends_on 'qt'
