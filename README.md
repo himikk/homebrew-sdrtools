@@ -94,6 +94,13 @@ brew install --build-from-source hackrf
 brew install --build-from-source --HEAD gr-osmosdr
 ```
 
+Create the ~/.gnuradio/config.conf config file for custom block support and add this into it
+
+```
+[grc]
+local_blocks_path=/usr/local/share/gnuradio/grc/blocks
+```
+
 Finally, we build gqrx.
 
 ```
