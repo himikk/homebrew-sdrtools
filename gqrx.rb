@@ -7,13 +7,13 @@ require 'formula'
 class Gqrx < Formula
   homepage 'https://github.com/csete/gqrx'
   head 'https://github.com/csete/gqrx.git',
-    :revision => '222bf623983b144b143c94c3ed6cb7c91cd43d31'
+    :revision => '7f98552701ec6fb27fa5d5a6ba1273c000761c5a'
 
   depends_on 'cmake' => :build
   depends_on 'qt'
 #brew install --with-c+11 --universal boost
   depends_on 'boost'
-  depends_on 'gnuradio'
+  depends_on 'himikk/sdrtools/gnuradio'
 
   def patches
     #patch to compile to binary, comment out pulse audio and link boost correctly

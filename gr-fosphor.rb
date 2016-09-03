@@ -1,13 +1,13 @@
 require 'formula'
 
-class GrOsmosdr < Formula
+class GrFosphor < Formula
   homepage 'http://sdr.osmocom.org/trac/wiki/GrOsmoSDR'
-  head 'git://git.osmocom.org/gr-osmosdr.git', :shallow => false,
-    :revision => 'ae686c462df73285fc13d3a0dc76f360a911500b'
+  head 'git://git.osmocom.org/gr-fosphor', :shallow => false,
+    :revision => '7b6b9961bc2d9b84daeb42a5c8f8aeba293d207c'
 
   depends_on 'cmake' => :build
+  depends_on 'himikk/sdrtools/gr-osmosdr'
   depends_on 'himikk/sdrtools/gnuradio'
-  depends_on 'himikk/sdrtools/rtlsdr'
 
   def install
     mkdir 'build' do

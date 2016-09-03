@@ -2,11 +2,11 @@ require 'formula'
 
 class EttusUhd < Formula
   homepage 'http://www.ettus.com/'
-  url 'https://github.com/EttusResearch/uhd/archive/003_008_005_rc1.tar.gz'
-  sha1 '15def4f7227b577fb56011e562e4f1081816fadb'
-  version '3.8.5rc1'
+  url 'https://github.com/EttusResearch/uhd/archive/release_003_010_000_000.tar.gz'
+  sha256 '9e018c069851fd68ba63908a9f9944763832ce657f5b357d4e6c64293ad0d2cd'
+  version '3.10.0'
   head 'https://github.com/EttusResearch/uhd.git',
-    :revision => '012381d999c4a895593412aaf06e73432b458810',
+    :revision => '6e1ac3fc9433642d02d7963ecfdd9aef3ca6d35e',
     :shallow => true
 
   depends_on 'cmake' => :build
