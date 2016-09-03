@@ -93,6 +93,18 @@ brew install --build-from-source --HEAD rtlsdr
 brew install --build-from-source hackrf
 brew install --build-from-source --HEAD gr-osmosdr
 ```
+Installing gr-fosphor
+First we need to install latest nVidia Web Driver
+Then OpenGL module for Python
+
+```
+pip install PyOpenGL PyOpenGL-accelerate
+```
+
+```
+brew install --build-from-source --HEAD gr-fosphor
+```
+
 
 Finally, we build gqrx.
 
