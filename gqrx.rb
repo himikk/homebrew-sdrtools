@@ -13,7 +13,7 @@ class Gqrx < Formula
   depends_on 'qt'
 #brew install --with-c+11 --universal boost
   depends_on 'boost'
-  depends_on 'himikk/sdrtools/gnuradio'
+  depends_on 'gnuradio'
 
   def patches
     #patch to compile to binary, comment out pulse audio and link boost correctly
